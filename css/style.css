@@ -1,0 +1,260 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.5;
+	min-height: 100dvh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
+	color: whitesmoke;
+	background: rgba(0, 0, 0, 1);
+}
+
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translateX(3rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-3rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+		filter: blur(1rem);
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Keyframes */
+
+.btn-scroll {
+	position: fixed;
+	z-index: 10;
+	padding: 0.5rem 0.875rem;
+	text-align: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	bottom: 4rem;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	border: solid transparent;
+	overflow: hidden;
+	background: linear-gradient(black) padding-box, linear-gradient(blue, green) border-box;
+	cursor: pointer;
+}
+
+@keyframes scrollBtn {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-1rem);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.btn-scroll span {
+	display: block;
+	will-change: transform;
+	width: 100%;
+	transition: all 1s ease-in-out;
+	font-weight: bolder;
+	animation: scrollBtn 1s ease-in-out infinite;
+}
+
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 1.5rem;
+}
+
+section {
+	min-height: 100dvh;
+	width: 100%;
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem #eaeaea;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0 1rem;
+}
+
+h2 {
+	animation: h2Animation both;
+	animation-timeline: view();
+	animation-range: entry 0% cover 100vh;
+}
+
+@keyframes h2Animation {
+	from {
+		opacity: 0.5;
+		filter: blur(1rem);
+	}
+	to {
+		opacity: 1;
+		filter: blur(0rem);
+	}
+}
+
+p {
+	text-align: center;
+}
+
+/* TODO: Hero Section */
+section#hero {
+	gap: 1rem;
+	padding: 0 1rem;
+	justify-content: center;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/family/family-photo-4.jpg");
+	background-repeat: no-repeat, no-repeat;
+	background-size: cover, contain;
+	background-position: center, center;
+	overflow: hidden;
+	animation: fade linear both 1s;
+}
+
+section#hero > .wrapper {
+	text-align: center;
+	h1 {
+		animation: fadeInLeft 1s ease-out backwards;
+		text-shadow: 0 0 0.75rem #242424, 0 0 1.5rem #fcdc5a;
+	}
+	p {
+		animation: fadeInRight 1s ease-in-out backwards;
+	}
+}
+
+/* TODO: Hero Section END */
+/* TODO: Messages Section */
+
+section#messages {
+	justify-content: center;
+	text-align: center;
+	padding: 1.5rem;
+	background: url("../assets/me/images-1.webp");
+	background-position: center;
+	background-size: cover;
+	p {
+		text-shadow: 0.25rem 0.25rem 0.5rem #242424;
+	}
+}
+
+/* TODO: Messages Section END */
+
+/* TODO: Gallery Section  */
+
+section#gallery {
+	padding: 2rem;
+}
+
+section#gallery .gallery-container {
+	flex: 1;
+	display: grid;
+	place-content: center;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+}
+
+section#gallery .gallery-container img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
+	border: 1px solid lightskyblue;
+	border-radius: 1rem;
+
+	animation: imageReveal both;
+	animation-timeline: view(50% 20%);
+}
+
+@keyframes imageReveal {
+	from {
+		opacity: 0;
+		transform: scale(60%);
+	}
+	to {
+		opacity: 1;
+		transform: scale(100%);
+	}
+}
+/* TODO: Gallery Section END */
+
+section#video video {
+	flex: 1;
+	aspect-ratio: 1/1;
+	border-radius: 1rem;
+	width: 100%;
+}
+
+section#closing {
+	background: linear-gradient(45deg, rgb(36, 36, 36, 0.7), rgb(51, 51, 51, 0.7), rgb(68, 68, 68, 0.7)),
+		url("../assets/family/family-photo-4.jpg");
+	background-size: cover, cover;
+	background-position: center;
+	text-shadow: 0.25rem 0 0.5rem #242424;
+	text-align: center;
+}
+
+@media screen and (min-width: 576px) {
+	body {
+		font-size: 1.25rem;
+	}
+	section {
+		padding: 2.5rem;
+	}
+
+	section#hero {
+		max-height: 100dvh;
+		height: 100dvh;
+		background-size: cover;
+	}
+	section#hero > .wrapper {
+		h1 {
+			font-size: 4rem;
+		}
+	}
+
+	section#gallery .gallery-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	section#video video {
+		flex: 1;
+		width: 50%;
+	}
+}

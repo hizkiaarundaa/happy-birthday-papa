@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Happy Birthday, Dad!</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<main>
+			<!-- Hero Section -->
+			<section id="hero">
+				<div class="wrapper">
+					<h1>Happy Birthday, Dad!</h1>
+					<p>
+						Tambah tua, tambah keren. <br />
+						sama deng tape kopi makin pekat, makin mantap.
+					</p>
+				</div>
+			</section>
+
+			<section id="messages">
+				<h3>From Your TroubleMaker Child (Obviously Me)</h3>
+				<p>
+					Selamat ulang tahun, Papa! Semoga tetap sehat, kuat, kong le ba sanang diri sadiki. <br />
+					Cuma satu permintaan — tahun ini mohon jangan tanya “kapan pulang?” dari qt le inga rumah.
+				</p>
+			</section>
+
+			<section id="gallery">
+				<h2>Photo Memories</h2>
+				<div class="gallery-container">
+					<img src="assets/me/images-1.webp" alt="Memory 1" />
+					<img src="assets/me/images-2.jpg" alt="Memory 2" />
+					<img src="assets/family/family-photo.jpg" alt="Memory 3" />
+				</div>
+				<p>Foto-foto bukti bahwa dari dulu Papa nintau bagaya. Sekarang? tetap kurang sama.</p>
+			</section>
+			<section id="video">
+				<h2>Birthday Video</h2>
+				<video muted autoplay loop>
+					<source src="assets/video/video-1.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<p>(Tenang, nda ada video pas da pukul pa qt disini.)</p>
+			</section>
+			<!-- Closing Message -->
+			<section id="closing">
+				<h2>Thanks for Everything</h2>
+				<p>Makase banya jo. biarjo qt pe masa kecil mar jang bekeng pa ethan wkwk</p>
+				<p>With all our love,<br />Your family ❤️</p>
+			</section>
+			<button id="btnScroll" class="btn-scroll"><span>&#x2193;</span></button>
+		</main>
+		<script>
+			const sections = document.querySelectorAll("section")
+			const scrollBtn = document.querySelector(".btn-scroll")
+
+			scrollBtn.addEventListener("click", () => {
+				const scrollY = window.scrollY
+				let nextSection = null
+
+				// Cari section berikutnya yang lebih tinggi dari posisi sekarang
+				for (let i = 1; i < sections.length; i++) {
+					if (sections[i].offsetTop > scrollY + 10) {
+						nextSection = sections[i]
+						break
+					}
+				}
+
+				// Kalau ada, scroll ke situ
+				if (nextSection) {
+					nextSection.scrollIntoView()
+				} else {
+					// Kalau sudah di section terakhir, balik ke paling atas
+					sections[0].scrollIntoView()
+				}
+			})
+		</script>
+	</body>
+</html>
